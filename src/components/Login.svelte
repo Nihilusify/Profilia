@@ -21,7 +21,8 @@
 
         if (!passwordIsValid(fields.pass)) {
             valid = false;
-            errors.pass = "Must contain 6-20 chars, one number, one uppercase and one lower case";
+            errors.pass =
+                "Must contain 6-20 chars, one number, one uppercase and one lower case";
         }
     };
 </script>
@@ -57,6 +58,9 @@
                     on:click={user.signInWithGoogle}
                 />
             </div>
+            <Button type="secondary" flat={true} on:click={user.accountSignOut}
+                >sign Out</Button
+            >
         </div>
     </div>
 </Card>
@@ -82,7 +86,7 @@
     .hor-line > span {
         position: absolute;
         transform: translate(-50%, -50%);
-        background-color: white;
+        background-color: lightgrey;
         padding: 0 20px;
     }
 
@@ -98,11 +102,12 @@
     label {
         margin: 10px auto;
         text-align: left;
+        color: var(--primaryText);
     }
 
     .error {
         font-weight: bold;
         font-size: 12px;
-        color: #d91b42;
+        color: var(--error);
     }
 </style>

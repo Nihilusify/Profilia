@@ -19,13 +19,13 @@
   }
 
   .primary {
-    background: #d91b42;
-    color: white;
+    background: var(--primary);
+    color: var(--primaryText);
   }
 
   .secondary {
-    background: #45c496;
-    color: white;
+    background: var(--secondary);
+    color: var(--secondaryText);
   }
 
   .flat {

@@ -1,3 +1,13 @@
+:root {
+    --mainBackground: #212121;
+    --formBackground: #323232;
+    --primary: #0D7377;
+    --primaryText: #fff;
+    --secondary: #14FFEC;
+    --secondaryText: #323232;
+    --error: #FF4C29;
+  }
 body{
     font-family: 'Roboto', sans-serif;
+    background: var(--mainBackground);
 }

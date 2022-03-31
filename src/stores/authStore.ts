@@ -1,6 +1,7 @@
 import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
+import { setDoc, doc, getDoc, updateDoc } from 'firebase/firestore';
 import { writable } from "svelte/store";
-import { firebaseApp } from '../firebase';
+import { firebaseApp, db } from '../firebase';
 import type { User } from "../global";
 
 const createUserWritable = () => {
@@ -25,7 +26,35 @@ const createUserWritable = () => {
             return;
         }
 
-        update(() => {
+        update(async () => {
+            const date = new Date();
+            const docRef = doc(db, 'users', user.uid);
+            const docSnap = await getDoc(docRef);
+            console.log(user, docSnap.data(), docSnap.exists(), user.uid, docRef.path);
+            
+            if (docSnap.exists()) {
+                console.log(date)
+                updateDoc(docRef, {
+                    uid: user.uid,
+                    displayName: user.displayName,
+                    email: user.email,
+                    photoURL: user.photoURL,
+                    lastModifiedDate: date,
+                });
+            } else {
+                console.log('set')
+                setDoc(docRef, {
+                    uid: user.uid,
+                    displayName: user.displayName,
+                    email: user.email,
+                    photoURL: user.photoURL,
+                    createdDate: date,
+                    lastModifiedDate: date,
+                } as User);
+            }
+
+
+
             return {
                 uid: user.uid,
                 displayName: user.displayName,
@@ -44,7 +73,7 @@ const createUserWritable = () => {
     };
 
     const accountSignOut = () => {
-        signOut(auth).then(()=> {})
+        signOut(auth).then(() => { })
             .catch((error) => {
                 console.error('Error signing out', error);
             });
@@ -53,7 +82,7 @@ const createUserWritable = () => {
     return {
         subscribe,
         signInWithGoogle,
-        accountSignOut
+        accountSignOut,
     }
 };
 

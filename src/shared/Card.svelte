@@ -6,8 +6,11 @@
 
 <style>
   .card {
-    background: #fff;
+    background: var(--formBackground);
     border-radius: 6px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 4px hsl(black, 100%, 10%);
+    margin: auto;
+    width: 50%;
+    padding: 10px 0;
   }
 </style>

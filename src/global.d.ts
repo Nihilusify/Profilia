@@ -6,7 +6,7 @@ export interface User{
     email: string;
     createdDate: Date;
     lastModifiedDate: Date;
-    createdUser?: User;
+    createdUser?: string;
     photoURL?: string;
     name?: string;
     surname?: string;
