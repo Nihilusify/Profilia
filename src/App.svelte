@@ -1,9 +1,12 @@
 <script lang="ts">
     import Login from "./components/Login.svelte";
+    import LoginImproved from "./components/LoginImproved.svelte";
+    import Profile from "./components/Profile.svelte";
 </script>
 
 <main>
-    <Login />
+    <!-- <LoginImproved /> -->
+    <Profile />
 </main>
 
 <style>
