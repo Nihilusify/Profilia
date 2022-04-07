@@ -5,7 +5,7 @@
 </script>
 
 <main>
-    <!-- <LoginImproved /> -->
+    <LoginImproved />
     <Profile />
 </main>
 
